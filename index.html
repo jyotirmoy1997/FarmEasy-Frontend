@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FarmEasy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="gradient-light-yellow">
+  <img src="bg-1.jpg" alt="Left Image" class="corner-image left"></img>
+  <img src="bg-2.jpg" alt="Right Image" class="corner-image right"></img>
+  <div class="container">
+    <h1>FarmEasy</h1>
+    <form id="radioForm">
+      <h3><b>Select an option / कृपया रोग निदान को लागी एक विकल्प चयन गर्नुहोस्:</b></h3>
+      <div class="radio-group">
+        <label><input type="radio" name="option" value="1"><b>Orange / सुन्तला</b></label>
+        <label><input type="radio" name="option" value="2"><b>Guava / अम्बक्</b></label>
+        <label><input type="radio" name="option" value="3"><b>Cardamom / अलैंची</b></label>
+      </div>
+      <button type="button" id="goButton"><b>Select / चयन गर्नुहोस्</b></button>
+      <p style="text-align: justify;"><b>Developed by-</b> The Students of Eklavya Model Residential School (EMRS), Swayem, Mangan, Sikkim. <b>Guided by-</b> <i>Gouravmoy Banerjee (PGT Computer Science), </i><i>Madan Gurung (PGT Physics)</i> and <i>Sunil Cintury (PGT Physics).</i></p>
+    </form>
+  </div>
+  <script>
+    document.getElementById('goButton').addEventListener('click', function () {
+      const radioButtons = document.querySelectorAll('input[name="option"]');
+      let selectedOption = null;
+
+      radioButtons.forEach(radio => {
+        if (radio.checked) {
+          selectedOption = radio.value;
+        }
+      });
+
+      if (selectedOption) {
+        window.location.href = `checkboxes.html?option=${encodeURIComponent(selectedOption)}`;
+      } else {
+        alert('Please select a radio button first.');
+      }
+    });
+  </script>
+</body>
+
+</html>

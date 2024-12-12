@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox Selection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="gradient-light-green">
+  <div class="container">
+    <h1>Symptoms / अवलोकन गरिएका लक्षण</h1>
+    <div id="selectedOption"></div>
+    <form id="checkboxForm">
+      <h3><b>Select symptoms / चयन गरिएका लक्षण:</b></h3>
+      <div id="checkboxGroup" class="checkbox-group"></div>
+      <button type="button" id="submitButton"><b>Submit Your Observation / आफ्नो अवलोकन पेश गर्नुहोस्</b>
+    </form></button>
+    </form>
+    <div id="output" class="hidden"></div>
+  </div>
+  <script>
+    const selectedOptionDiv = document.getElementById('selectedOption');
+    const checkboxGroup = document.getElementById('checkboxGroup');
+
+    const params = new URLSearchParams(window.location.search);
+    const selectedOption = params.get('option');
+
+    if (selectedOption === "1") {
+      checkboxGroup.innerHTML = `
+        <label><input type="checkbox" name="symptom" value="Symptom 1"><b> YOUNG LEAVES, SHOOTS AND FRUITS AFFECTED? / जवान पातहरू, अंकुरहरू र फलहरू प्रभावित छन्?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 2"><b> BLACK CIRCULAR SPOTS OBSERVED ON THE AFFECTED AREA? / कालो गोलाकार दागहरू प्रभावित क्षेत्रमा देखिएका छन्?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 3"><b> SILVERY GREY APPEARANCE ON DEAD TWIGS? / मृत ट्विगहरूमा चाँदीको खैरो उपस्थिति?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 4"><b> PREMATURE DEFOLIATION OBSERVED? / अकाली डिफोलिएशन अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 5"><b> DRYING OF A LEAVES OBSERVED? / पातहरू सुकाउने अवलोकन गरिएको छ?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 6"> <b>DIEBACK SYMPTOMS ON SMALL TWIGS OBSERVED? / साना ट्विगहरूमा डाइब्याक लक्षणहरू अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 7"> <b>GUMMY SECRETION ON THE BASE OF DEAD TWIGS OBSERVED? / मृत ट्विग्सको आधारमा चिसो स्राव देखियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 8"> <b>WHITISH POWDERY MASS ON THE YOUNG LEAVES AND TWIGS OBSERVED? / जवान पातहरू र ट्विगहरूमा सेतो पाउडर मास अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 9"> <b>DISTORTION OF AFFECTED LEAVES OBSERVED? / प्रभावित पातहरूको विरूपण अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 10"> <b>FUNGUS COVERING IN YOUNG FRUITS OBSERVED? / युवा फलहरूमा फङ्गस ढाकिएको देखियो?</b></label>`;
+    } else if (selectedOption === "2") {
+      checkboxGroup.innerHTML = `
+        <label><input type="checkbox" name="symptom" value="Symptom 11"> <b>TIP OF BRANCHES AFFECTED? / प्रभावित शाखाहरूको टिप?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 12"> <b>DIEBACK SYMPTOMS OBSERVED? / डाइब्याक लक्षणहरू अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 13"> <b>DISCOLORATION BELOW THE CALYX OBSERVED? / क्यालिक्स तलको विरूपण अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 14"> <b>FRUITS AFFEACTED? / फलहरू प्रभावित?
+</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 15"> <b>WHITE AND BROWN SPOTS ON FRUIT OBSERVED? / फलफूलमा सेतो र खैरो दाग देखियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 16"> <b>SMELLY ODOUR PRESENT? / दुर्गन्धित गन्ध छ?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 17"> <b>TWIGS AND STEM AFFECTED? / TWIGS र स्टेम प्रभावित?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 18"> <b>DISCOLORATION OF STEMS OBSERVED? / स्टेम्सको विरूपण अवलोकन गरियो?</b>/label>
+        <label><input type="checkbox" name="symptom" value="Symptom 19"> <b>PREMATURE DEFOLIATION OBSERVED? / समयपूर्व डिफोलिएशन अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 20"> <b>UNDERDEVELOPED BRANCHES OBSERVED? / अविकसित शाखाहरू अवलोकन गरियो?</b></label>`;
+    } else if (selectedOption === "3") {
+      checkboxGroup.innerHTML = `
+        <label><input type="checkbox" name="symptom" value="Symptom 21"> <b>DULL GREEN COLOR ON CAPSULE OBSERVED? / क्याप्सुलमा धमिलो हरियो रङ अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 22"> <b>LEAVES AND CAPSULE AFFECTED? / पात र क्याप्सुल प्रभावित?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 23"> <b>LARGE AND IRREGULAR SPOTS ON LEAVES OBSERVED? / पातहरूमा ठूला र अनियमित दागहरू अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 24"> <b>SMALL LIGHT BROWN LESIONS ON CAPSULE OBSERVED? / क्याप्सुलमा साना हल्का खैरो घाउहरू देखिएका छन्?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 25"> <b>PALE YELLOW APPEARANCE OF LEAVES OBSERVED? / पातहरूको फिक्का पहेंलो उपस्थिति अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 26"> <b>DYING OF YOUNG SHOOTS OBSERVED? / युवा गोली प्रहारको मृत्यु अवलोकन गरियो?</b></label>
+        <label><input type="checkbox" name="symptom" value="Symptom 27"> <b>DYRING RHIZOMES AT BASE OBSERVED? / आधारमा Dyring Rhizomes अवलोकन गरियो?</b></label>`;
+    } else {
+      selectedOptionDiv.textContent = "Invalid selection. Please go back.";
+    }
+
+    document.getElementById('submitButton').addEventListener('click', async function () {
+      const checkboxes = document.querySelectorAll('input[name="symptom"]');
+      let selectedSymptoms = [];
+
+      checkboxes.forEach(checkbox => {
+        if (checkbox.checked) selectedSymptoms.push(checkbox.value);
+      });
+      //console.log(selectedSymptoms);
+
+      if (selectedSymptoms.length > 0) {
+        try {
+          const response = await fetch('http://127.0.0.1:5000/analyze-symptoms', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ symptoms: selectedSymptoms })
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `
+                      <h3>Disease(s):</h3>
+                      <ul>${data.Disease.map(d => `<li>${d}</li>`).join('')}</ul>
+                      <h3>Remedy(ies):</h3>
+                      <ul>${data.Remedy.map(r => `<li>${r}</li>`).join('')}</ul>
+                  `;
+            outputDiv.classList.remove('hidden');
+          } else {
+            alert('Failed to fetch disease analysis. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again later.');
+        }
+      } else {
+        alert('Please select at least one checkbox.');
+      }
+    });
+  </script>
+</body>
+
+</html>
